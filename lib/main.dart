@@ -33,12 +33,16 @@ class MyApp extends StatelessWidget {
                     textAlign: TextAlign.center,
                     text: const TextSpan(
                         text: groupTitle,
-                        style: TextStyle(fontSize: 20),
+                        style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.black,
+                        ),
                         children: <TextSpan>[
                           TextSpan(
                             text: '\n@ Beihang University (BUAA)',
                             style: TextStyle(
                               fontSize: 16,
+                              color: Colors.black,
                             ),
                           ),
                         ]),
@@ -117,12 +121,16 @@ class MyApp extends StatelessWidget {
                     textAlign: TextAlign.center,
                     text: const TextSpan(
                         text: groupTitle,
-                        style: TextStyle(fontSize: 20),
+                        style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.black,
+                        ),
                         children: <TextSpan>[
                           TextSpan(
                             text: '\n@ Beihang University (BUAA)',
                             style: TextStyle(
                               fontSize: 16,
+                              color: Colors.black,
                             ),
                           ),
                         ]),
@@ -194,9 +202,9 @@ class MyHomePage extends StatelessWidget {
         return Scaffold(
           body: Align(
             alignment: Alignment.center,
-            child: Container(
+            child: SizedBox(
               height: MediaQuery.of(context).size.height - 150,
-              width: MediaQuery.of(context).size.width,
+              width: MediaQuery.of(context).size.width - 300,
               child: NowWidget(nowPage: nowPage),
             ),
           ),
@@ -205,7 +213,7 @@ class MyHomePage extends StatelessWidget {
         return Scaffold(
           body: Align(
             alignment: Alignment.center,
-            child: Container(
+            child: SizedBox(
               height: MediaQuery.of(context).size.height - 130,
               width: MediaQuery.of(context).size.width,
               child: NowWidget(nowPage: nowPage),
@@ -240,7 +248,6 @@ class NowWidget extends StatelessWidget {
         page = const ContactPage();
         break;
       default:
-        // page = Expanded(child: Placeholder());
         page = const ComingUp();
     }
     return page;
@@ -263,27 +270,45 @@ class HomePage extends StatelessWidget {
                 child: SingleChildScrollView(
                   child: Center(
                     child: Padding(
-                      padding: const EdgeInsets.fromLTRB(100, 0, 100, 0),
+                      padding: const EdgeInsets.fromLTRB(60, 0, 60, 0),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Image.asset('imgs/home1.png'),
-                          const SelectableText(
-                            """We are an electronic structure theory research lab within the School of Physics at Beihang University (BUAA), Beijing. Our research spans the interdisciplinary fields of physics, chemistry, and computational science, which include the development of quantum chemistry methods and codes, computational materials science, as well as the exploration of new algorithms based on machine learning and quantum computing. We are particularly interested in the study of relativistic effects and strong correlations of materials containing heavy elements.""",
-                            style: TextStyle(fontSize: 30.0),
+                          Image.asset('assets/imgs/home1.png'),
+                          const Padding(
+                            padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
+                            child: SelectableText(
+                              """We are an electronic structure theory research lab within the School of Physics at Beihang University (BUAA), Beijing. Our research spans the interdisciplinary fields of physics, chemistry, and computational science, which include the development of quantum chemistry methods and codes, computational materials science, as well as the exploration of new algorithms based on machine learning and quantum computing. We are particularly interested in the study of relativistic effects and strong correlations of materials containing heavy elements.""",
+                              style: TextStyle(fontSize: 19.0),
+                            ),
                           ),
-                          Image.asset('imgs/home2.png'),
                         ],
                       ),
                     ),
                   ),
                 ),
               ),
-              InkWell(
-                child: SelectableText("京ICP备2023032577号",
-                    style:
-                        TextStyle(color: Color.fromARGB(120, 180, 180, 180))),
-                onTap: () => launchUrl(Uri.parse('https://beian.miit.gov.cn')),
+              Image.asset(
+                'assets/imgs/home2.png',
+                width: MediaQuery.of(context).size.width * 0.7,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  InkWell(
+                    child: const Text("京ICP备2023032577号",
+                        style: TextStyle(
+                            color: Color.fromARGB(120, 180, 180, 180))),
+                    onTap: () =>
+                        launchUrl(Uri.parse('https://beian.miit.gov.cn')),
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.fromLTRB(8.0, 0, 8, 0),
+                    child: Text("京公网安备11011402053652号",
+                        style: TextStyle(
+                            color: Color.fromARGB(120, 180, 180, 180))),
+                  ),
+                ],
               ),
             ],
           ),
@@ -301,25 +326,40 @@ class HomePage extends StatelessWidget {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Image.asset('imgs/home1.png'),
-                          const SelectableText(
-                            """We are an electronic structure theory research lab within the School of Physics at Beihang University (BUAA), Beijing. Our research spans the interdisciplinary fields of physics, chemistry, and computational science, which include the development of quantum chemistry methods and codes, computational materials science, as well as the exploration of new algorithms based on machine learning and quantum computing. We are particularly interested in the study of relativistic effects and strong correlations of materials containing heavy elements.""",
-                            style: TextStyle(
-                              fontSize: 23.0,
+                          Image.asset('assets/imgs/home1.png'),
+                          const Padding(
+                            padding: EdgeInsets.fromLTRB(0, 20, 0, 20),
+                            child: SelectableText(
+                              """We are an electronic structure theory research lab within the School of Physics at Beihang University (BUAA), Beijing. Our research spans the interdisciplinary fields of physics, chemistry, and computational science, which include the development of quantum chemistry methods and codes, computational materials science, as well as the exploration of new algorithms based on machine learning and quantum computing. We are particularly interested in the study of relativistic effects and strong correlations of materials containing heavy elements.""",
+                              style: TextStyle(
+                                fontSize: 20.0,
+                              ),
                             ),
                           ),
-                          Image.asset('imgs/home2.png'),
+                          Image.asset('assets/imgs/home2.png'),
                         ],
                       ),
                     ),
                   ),
                 ),
               ),
-              InkWell(
-                child: SelectableText("京ICP备2023032577号",
-                    style:
-                        TextStyle(color: Color.fromARGB(120, 180, 180, 180))),
-                onTap: () => launchUrl(Uri.parse('https://beian.miit.gov.cn')),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  InkWell(
+                    child: const Text("京ICP备2023032577号",
+                        style: TextStyle(
+                            color: Color.fromARGB(120, 180, 180, 180))),
+                    onTap: () =>
+                        launchUrl(Uri.parse('https://beian.miit.gov.cn')),
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.fromLTRB(8.0, 0, 8, 0),
+                    child: Text("京公网安备11011402053652号",
+                        style: TextStyle(
+                            color: Color.fromARGB(120, 180, 180, 180))),
+                  ),
+                ],
               ),
             ],
           ),
@@ -340,8 +380,8 @@ class PeoplePage extends StatelessWidget {
         return SingleChildScrollView(
           child: Column(
             children: [
-              Padding(
-                padding: const EdgeInsets.all(20.0),
+              const Padding(
+                padding: EdgeInsets.all(20.0),
                 child: SelectableText(
                   'Current Group Members',
                   style: TextStyle(
@@ -356,7 +396,7 @@ class PeoplePage extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.all(20.0),
                     child: Image.asset(
-                      'imgs/zrd.jpeg',
+                      'assets/imgs/zrd.jpeg',
                       width: MediaQuery.of(context).size.width * 0.1 * 0.9,
                     ),
                   ),
@@ -406,7 +446,7 @@ class PeoplePage extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.all(20.0),
                           child: Image.asset(
-                            'imgs/hanwang.png',
+                            'assets/imgs/hanwang.png',
                             width:
                                 MediaQuery.of(context).size.width * 0.1 * 0.8,
                           ),
@@ -445,7 +485,7 @@ Research interest: fully relativistic DFT+U method and code development; magneti
                         Padding(
                           padding: const EdgeInsets.all(20.0),
                           child: Image.asset(
-                            'imgs/zhengpan.png',
+                            'assets/imgs/zhengpan.png',
                             width:
                                 MediaQuery.of(context).size.width * 0.1 * 0.8,
                           ),
@@ -488,7 +528,7 @@ Research interest: AI-accelerated ab initio algorithms; relativistic four-compon
                         Padding(
                           padding: const EdgeInsets.all(20.0),
                           child: Image.asset(
-                            'imgs/wenhaoli.png',
+                            'assets/imgs/wenhaoli.png',
                             width:
                                 MediaQuery.of(context).size.width * 0.1 * 0.8,
                           ),
@@ -508,9 +548,9 @@ Research interest: AI-accelerated ab initio algorithms; relativistic four-compon
                               ),
                               Align(
                                 alignment: Alignment.centerLeft,
-                                child: SelectableText("""Mphil (~PhD) Student
+                                child: SelectableText("""MPhil (~PhD) Student
 B.S. Hebei University
-Research interest: Electric-driven molecular motors; intermolecular interactions."""),
+Research interest: electric-field-driven molecular machines; intermolecular interactions."""),
                               ),
                             ],
                           ),
@@ -526,7 +566,7 @@ Research interest: Electric-driven molecular motors; intermolecular interactions
                         Padding(
                           padding: const EdgeInsets.all(20.0),
                           child: Image.asset(
-                            'imgs/xinyitan.png',
+                            'assets/imgs/xinyitan.png',
                             width:
                                 MediaQuery.of(context).size.width * 0.1 * 0.8,
                           ),
@@ -546,9 +586,9 @@ Research interest: Electric-driven molecular motors; intermolecular interactions
                               ),
                               Align(
                                 alignment: Alignment.centerLeft,
-                                child: SelectableText("""Mphil (~PhD) Student
+                                child: SelectableText("""MPhil (~PhD) Student
 B.S. Xiangtan University
-Research interest: fullerene-based nuclear fuels; electronic properties of silicates."""),
+Research interest: metallofullerenes; electronic properties of silicates."""),
                               ),
                             ],
                           ),
@@ -569,7 +609,7 @@ Research interest: fullerene-based nuclear fuels; electronic properties of silic
                         Padding(
                           padding: const EdgeInsets.all(20.0),
                           child: Image.asset(
-                            'imgs/zhaoyangzhang.png',
+                            'assets/imgs/zhaoyangzhang.png',
                             width:
                                 MediaQuery.of(context).size.width * 0.1 * 0.8,
                           ),
@@ -606,11 +646,11 @@ Research interest: relativistic energy band theory; perovskites.
                       children: [
                         Padding(
                           padding: const EdgeInsets.all(20.0),
-                          child: Container(
+                          child: SizedBox(
                             height: 200,
                             width:
                                 MediaQuery.of(context).size.width * 0.1 * 0.8,
-                            child: Placeholder(),
+                            child: const Placeholder(),
                           ),
                         ),
                         const Expanded(
@@ -628,7 +668,7 @@ Research interest: relativistic energy band theory; perovskites.
                               ),
                               Align(
                                 alignment: Alignment.centerLeft,
-                                child: SelectableText("""Mphil (expected 2024)
+                                child: SelectableText("""MPhil (expected 2024)
 B.S. Nanhua University (expected 2024)
 Research interest: electronic properties of silicates containing lanthanide elements."""),
                               ),
@@ -651,7 +691,7 @@ Research interest: electronic properties of silicates containing lanthanide elem
                         Padding(
                           padding: const EdgeInsets.all(20.0),
                           child: Image.asset(
-                            'imgs/peileizuo.png',
+                            'assets/imgs/peileizuo.png',
                             width:
                                 MediaQuery.of(context).size.width * 0.1 * 0.8,
                           ),
@@ -690,7 +730,7 @@ Research interest: molecular dynamics for organic-inorganic hybrid perovskites.
                         Padding(
                           padding: const EdgeInsets.all(20.0),
                           child: Image.asset(
-                            'imgs/deyangliang.png',
+                            'assets/imgs/deyangliang.png',
                             width:
                                 MediaQuery.of(context).size.width * 0.1 * 0.8,
                           ),
@@ -734,7 +774,7 @@ Research interest: Deep learning for spin-orbit splittings of perovskites.
                         Padding(
                           padding: const EdgeInsets.all(20.0),
                           child: Image.asset(
-                            'imgs/shengriliu.png',
+                            'assets/imgs/shengriliu.png',
                             width:
                                 MediaQuery.of(context).size.width * 0.1 * 0.8,
                           ),
@@ -772,7 +812,7 @@ Research interest: molecular dynamics and deep neuro network training for perovs
                         Padding(
                           padding: const EdgeInsets.all(20.0),
                           child: Image.asset(
-                            'imgs/siyuanzhang.png',
+                            'assets/imgs/siyuanzhang.png',
                             width:
                                 MediaQuery.of(context).size.width * 0.1 * 0.8,
                           ),
@@ -814,11 +854,11 @@ Research interest: machine learning; Principal Components Analysis; spin-orbit c
                       children: [
                         Padding(
                           padding: const EdgeInsets.all(20.0),
-                          child: Container(
+                          child: SizedBox(
                             height: 200,
                             width:
                                 MediaQuery.of(context).size.width * 0.1 * 0.8,
-                            child: Placeholder(),
+                            child: const Placeholder(),
                           ),
                         ),
                         const Expanded(
@@ -851,18 +891,26 @@ Research interest: coming soon...
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 500,
               ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: InkWell(
-                  child: SelectableText("京ICP备2023032577号",
-                      style:
-                          TextStyle(color: Color.fromARGB(120, 180, 180, 180))),
-                  onTap: () =>
-                      launchUrl(Uri.parse('https://beian.miit.gov.cn')),
-                ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  InkWell(
+                    child: const Text("京ICP备2023032577号",
+                        style: TextStyle(
+                            color: Color.fromARGB(120, 180, 180, 180))),
+                    onTap: () =>
+                        launchUrl(Uri.parse('https://beian.miit.gov.cn')),
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.fromLTRB(8.0, 0, 8, 0),
+                    child: Text("京公网安备11011402053652号",
+                        style: TextStyle(
+                            color: Color.fromARGB(120, 180, 180, 180))),
+                  ),
+                ],
               ),
             ],
           ),
@@ -891,7 +939,7 @@ Research interest: coming soon...
                   Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: Image.asset(
-                      'imgs/zrd.jpeg',
+                      'assets/imgs/zrd.jpeg',
                       width: MediaQuery.of(context).size.width * 0.35,
                     ),
                   ),
@@ -936,7 +984,7 @@ Research interest: coming soon...
                   Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: Image.asset(
-                      'imgs/hanwang.png',
+                      'assets/imgs/hanwang.png',
                       width: MediaQuery.of(context).size.width * 0.35,
                     ),
                   ),
@@ -978,7 +1026,7 @@ Research interest: fully relativistic DFT+U method and code development; magneti
                   Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: Image.asset(
-                      'imgs/zhengpan.png',
+                      'assets/imgs/zhengpan.png',
                       width: MediaQuery.of(context).size.width * 0.35,
                     ),
                   ),
@@ -1019,7 +1067,7 @@ Research interest: AI-accelerated ab initio algorithms; relativistic four-compon
                   Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: Image.asset(
-                      'imgs/wenhaoli.png',
+                      'assets/imgs/wenhaoli.png',
                       width: MediaQuery.of(context).size.width * 0.35,
                     ),
                   ),
@@ -1040,9 +1088,9 @@ Research interest: AI-accelerated ab initio algorithms; relativistic four-compon
                         Align(
                           alignment: Alignment.centerLeft,
                           child: SelectableText(
-                            """Mphil (~PhD) Student
+                            """MPhil (~PhD) Student
 B.S. Hebei University
-Research interest: Electric-driven molecular motors; intermolecular interactions.""",
+Research interest: electric-field-driven molecular machines; intermolecular interactions.""",
                             style: TextStyle(
                               fontSize: 10,
                             ),
@@ -1060,7 +1108,7 @@ Research interest: Electric-driven molecular motors; intermolecular interactions
                   Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: Image.asset(
-                      'imgs/xinyitan.png',
+                      'assets/imgs/xinyitan.png',
                       width: MediaQuery.of(context).size.width * 0.35,
                     ),
                   ),
@@ -1081,9 +1129,9 @@ Research interest: Electric-driven molecular motors; intermolecular interactions
                         Align(
                           alignment: Alignment.centerLeft,
                           child: SelectableText(
-                            """Mphil (~PhD) Student
+                            """MPhil (~PhD) Student
 B.S. Xiangtan University
-Research interest: fullerene-based nuclear fuels; electronic properties of silicates.""",
+Research interest: metallofullerenes; electronic properties of silicates.""",
                             style: TextStyle(
                               fontSize: 10,
                             ),
@@ -1101,7 +1149,7 @@ Research interest: fullerene-based nuclear fuels; electronic properties of silic
                   Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: Image.asset(
-                      'imgs/zhaoyangzhang.png',
+                      'assets/imgs/zhaoyangzhang.png',
                       width: MediaQuery.of(context).size.width * 0.35,
                     ),
                   ),
@@ -1140,10 +1188,10 @@ Research interest: relativistic energy band theory; perovskites.""",
                 children: [
                   Padding(
                     padding: const EdgeInsets.all(10.0),
-                    child: Container(
+                    child: SizedBox(
                       height: 200,
                       width: MediaQuery.of(context).size.width * 0.35,
-                      child: Placeholder(),
+                      child: const Placeholder(),
                     ),
                   ),
                   SizedBox(
@@ -1163,7 +1211,7 @@ Research interest: relativistic energy band theory; perovskites.""",
                         Align(
                           alignment: Alignment.centerLeft,
                           child: SelectableText(
-                            """Mphil (expected 2024)
+                            """MPhil (expected 2024)
 B.S. Nanhua University (expected 2024)
 Research interest: electronic properties of silicates containing lanthanide elements.""",
                             style: TextStyle(
@@ -1183,7 +1231,7 @@ Research interest: electronic properties of silicates containing lanthanide elem
                   Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: Image.asset(
-                      'imgs/peileizuo.png',
+                      'assets/imgs/peileizuo.png',
                       width: MediaQuery.of(context).size.width * 0.35,
                     ),
                   ),
@@ -1223,7 +1271,7 @@ Research interest: molecular dynamics for organic-inorganic hybrid perovskites."
                   Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: Image.asset(
-                      'imgs/deyangliang.png',
+                      'assets/imgs/deyangliang.png',
                       width: MediaQuery.of(context).size.width * 0.35,
                     ),
                   ),
@@ -1262,7 +1310,7 @@ Research interest: Deep learning for spin-orbit splittings of perovskites.""",
                   Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: Image.asset(
-                      'imgs/shengriliu.png',
+                      'assets/imgs/shengriliu.png',
                       width: MediaQuery.of(context).size.width * 0.35,
                     ),
                   ),
@@ -1302,7 +1350,7 @@ Research interest: molecular dynamics and deep neuro network training for perovs
                   Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: Image.asset(
-                      'imgs/siyuanzhang.png',
+                      'assets/imgs/siyuanzhang.png',
                       width: MediaQuery.of(context).size.width * 0.35,
                     ),
                   ),
@@ -1340,10 +1388,10 @@ Research interest: machine learning; Principal Components Analysis; spin-orbit c
                 children: [
                   Padding(
                     padding: const EdgeInsets.all(10.0),
-                    child: Container(
+                    child: SizedBox(
                       height: 200,
                       width: MediaQuery.of(context).size.width * 0.35,
-                      child: Placeholder(),
+                      child: const Placeholder(),
                     ),
                   ),
                   SizedBox(
@@ -1375,18 +1423,26 @@ Research interest: coming soon...""",
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 500,
               ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: InkWell(
-                  child: SelectableText("京ICP备2023032577号",
-                      style:
-                          TextStyle(color: Color.fromARGB(120, 180, 180, 180))),
-                  onTap: () =>
-                      launchUrl(Uri.parse('https://beian.miit.gov.cn')),
-                ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  InkWell(
+                    child: const Text("京ICP备2023032577号",
+                        style: TextStyle(
+                            color: Color.fromARGB(120, 180, 180, 180))),
+                    onTap: () =>
+                        launchUrl(Uri.parse('https://beian.miit.gov.cn')),
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.fromLTRB(8.0, 0, 8, 0),
+                    child: Text("京公网安备11011402053652号",
+                        style: TextStyle(
+                            color: Color.fromARGB(120, 180, 180, 180))),
+                  ),
+                ],
               ),
             ],
           ),
@@ -1405,162 +1461,168 @@ class ResearchPage extends StatelessWidget {
         builder: (BuildContext context, BoxConstraints constraints) {
       if (constraints.maxWidth > 800) {
         return SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.fromLTRB(100, 0, 100, 0),
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(30.0),
-                  child: SelectableText(
-                    'Research Areas in the Zhao Group',
-                    style: TextStyle(
-                      color: Colors.purple,
-                      fontSize: 40,
-                    ),
+          child: Column(
+            children: [
+              const Padding(
+                padding: EdgeInsets.all(30.0),
+                child: SelectableText(
+                  'Research Areas in the Zhao Group',
+                  style: TextStyle(
+                    color: Colors.purple,
+                    fontSize: 40,
                   ),
                 ),
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: SelectableText(
-                    """1. Density Functional Theory (DFT) Methods for Relativistic Effects and Strong Correlations in Extended Systems:""",
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
+              ),
+              const Align(
+                alignment: Alignment.centerLeft,
+                child: SelectableText(
+                  """1. Density Functional Theory (DFT) Methods for Relativistic Effects and Strong Correlations in Extended Systems:""",
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: SelectableText(
-                    '''Materials containing heavy elements exhibit numerous novel properties, placing them at the forefront of physics and chemistry research. Compared to light elements, heavy atoms in the last few rows of the periodic table have much more complex electronic structures, leading to a long-standing challenge for ab initio calculations. This complexity often arises from two aspects: relativistic effects, which conceptually include the so-called scalar relativistic (SR) effects and the spin-orbit coupling (SOC) effects; and strong correlation effects, usually associated with the electron localization of unfilled d/f shells of transition metals.
-In previous studies, we have developed a quasi-four-component (Q4C) relativistic energy band theory for extended systems (with hundreds of atoms in a unit cell). This approach enables accurate fully-relativistic all-electron calculations for electronic structures with much cheaper computational costs. To further address relativistic effects and strong correlations synergistically, our group is currently working on developing fully-relativistic DFT+U methods and fully-relativistic hybrid functionals, which are expected to facilitate more accurate first-principles calculations for heavy-element-containing systems.''',
-                    style: TextStyle(
-                      fontSize: 15,
-                    ),
+              ),
+              const Align(
+                alignment: Alignment.centerLeft,
+                child: SelectableText(
+                  '''Materials containing heavy elements exhibit numerous novel properties, placing them at the forefront of physics and chemistry research. Compared to light elements, heavy atoms in the last few rows of the periodic table have much more complex electronic structures, leading to a long-standing challenge for ab initio calculations. This complexity often arises from two aspects: relativistic effects, which conceptually include the so-called scalar relativistic (SR) effects and the spin-orbit coupling (SOC) effects; and strong correlation effects, usually associated with the electron localization of unfilled d/f shells of transition metals.
+          In previous studies, we have developed a quasi-four-component (Q4C) relativistic energy band theory for extended systems (with hundreds of atoms in a unit cell). This approach enables accurate fully-relativistic all-electron calculations for electronic structures with much cheaper computational costs. To further address relativistic effects and strong correlations synergistically, our group is currently working on developing fully-relativistic DFT+U methods and fully-relativistic hybrid functionals, which are expected to facilitate more accurate first-principles calculations for heavy-element-containing systems.''',
+                  style: TextStyle(
+                    fontSize: 15,
                   ),
                 ),
-                Image.asset(
-                  'imgs/research1.png',
-                  width: MediaQuery.of(context).size.width * 0.35,
-                ),
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: SelectableText(
-                    """2. Large-Scale DFT Code Development:""",
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
+              ),
+              Image.asset(
+                'assets/imgs/research1.png',
+                width: MediaQuery.of(context).size.width * 0.35,
+              ),
+              const Align(
+                alignment: Alignment.centerLeft,
+                child: SelectableText(
+                  """2. Large-Scale DFT Code Development:""",
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: SelectableText(
-                    '''We are active developers of the FHI-aims electronic structure code package, which is an all-electron full-potential DFT code designed for large-scale parallel calculations. The ongoing in-house developments will be implemented under the framework of FHI-aims, adopting numeric atomical orbitals (NAO) as basis sets.''',
-                    style: TextStyle(
-                      fontSize: 15,
-                    ),
+              ),
+              const Align(
+                alignment: Alignment.centerLeft,
+                child: SelectableText(
+                  '''We are active developers of the FHI-aims electronic structure code package, which is an all-electron full-potential DFT code designed for large-scale parallel calculations. The ongoing in-house developments will be implemented under the framework of FHI-aims, adopting numeric atomical orbitals (NAO) as basis sets.''',
+                  style: TextStyle(
+                    fontSize: 15,
                   ),
                 ),
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: SelectableText(
-                    """3. Computational Chemistry and Materials Sciences:""",
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
+              ),
+              const Align(
+                alignment: Alignment.centerLeft,
+                child: SelectableText(
+                  """3. Computational Chemistry and Materials Sciences:""",
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: SelectableText(
-                    '''The aforementioned methods will be applied to materials containing heavy elements, such as perovskites, nuclear fuels, and magnetic materials.''',
-                    style: TextStyle(
-                      fontSize: 15,
-                    ),
+              ),
+              const Align(
+                alignment: Alignment.centerLeft,
+                child: SelectableText(
+                  '''The aforementioned methods will be applied to materials containing heavy elements, such as perovskites, nuclear fuels, and magnetic materials.''',
+                  style: TextStyle(
+                    fontSize: 15,
                   ),
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(0, 8.0, 0, 8.0),
-                      child: Column(
-                        children: [
-                          Image.asset(
-                            'imgs/research2.png',
-                            width: MediaQuery.of(context).size.width * 0.5 / 3,
-                          ),
-                          SelectableText(
-                              'Organic-Inorganic Hybrid Perovskites'),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(12.0, 8.0, 0, 8.0),
-                      child: Column(
-                        children: [
-                          Image.asset(
-                            'imgs/research3.png',
-                            width: MediaQuery.of(context).size.width * 0.5 / 3,
-                          ),
-                          SelectableText('Electric-Driven Molecular Machines'),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(0, 8.0, 0, 8.0),
-                      child: Column(
-                        children: [
-                          Image.asset(
-                            'imgs/research4.png',
-                            width: MediaQuery.of(context).size.width * 0.35 / 3,
-                          ),
-                          SelectableText('Metallofullerenes'),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: SelectableText(
-                    """4. Machine Learning (ML) and Quantum Computations for Electronic Structures:""",
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(0, 8.0, 0, 8.0),
+                    child: Column(
+                      children: [
+                        Image.asset(
+                          'assets/imgs/research2.png',
+                          width: MediaQuery.of(context).size.width * 0.5 / 3,
+                        ),
+                        const SelectableText(
+                            'Organic-Inorganic Hybrid Perovskites'),
+                      ],
                     ),
                   ),
-                ),
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: SelectableText(
-                    '''
-Through deep learning with convolutional neuro networks on large datasets, we aim to reveal the influence of structural information, such as bond lengths and angles, on the spin-orbit splitting magnitude in perovskite systems.
-Our group is also involved in developing deep learning (or other ML algorithms)-based ab initio methods that can accelerate electronic structure calculations.
-Another new direction is quantum computation. We will be collaborating with teams from Institute of Software, CAS and from University of Science and Technology of China (USTC), on one of the leading quantum computers located at USTC. The main interest will be developing ab initio algorithms for near-term quantum computers, and also early-stage applications to quantum chemistry.
-''',
-                    style: TextStyle(
-                      fontSize: 15,
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(12.0, 8.0, 0, 8.0),
+                    child: Column(
+                      children: [
+                        Image.asset(
+                          'assets/imgs/research3.png',
+                          width: MediaQuery.of(context).size.width * 0.5 / 3,
+                        ),
+                        const SelectableText(
+                            'Electric-Driven Molecular Machines'),
+                      ],
                     ),
                   ),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(0, 8.0, 0, 8.0),
+                    child: Column(
+                      children: [
+                        Image.asset(
+                          'assets/imgs/research4.png',
+                          width: MediaQuery.of(context).size.width * 0.35 / 3,
+                        ),
+                        const SelectableText('Metallofullerenes'),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              const Align(
+                alignment: Alignment.centerLeft,
+                child: SelectableText(
+                  """4. Machine Learning (ML) and Quantum Computations for Electronic Structures:""",
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-                SizedBox(
-                  height: 500,
+              ),
+              const Align(
+                alignment: Alignment.centerLeft,
+                child: SelectableText(
+                  '''
+          Through deep learning with convolutional neuro networks on large datasets, we aim to reveal the influence of structural information, such as bond lengths and angles, on the spin-orbit splitting magnitude in perovskite systems.
+          Our group is also involved in developing deep learning (or other ML algorithms)-based ab initio methods that can accelerate electronic structure calculations.
+          Another new direction is quantum computation. We will be collaborating with teams from Institute of Software, CAS and from University of Science and Technology of China (USTC), on one of the leading quantum computers located at USTC. The main interest will be developing ab initio algorithms for near-term quantum computers, and also early-stage applications to quantum chemistry.
+          ''',
+                  style: TextStyle(
+                    fontSize: 15,
+                  ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: InkWell(
-                    child: SelectableText("京ICP备2023032577号",
+              ),
+              const SizedBox(
+                height: 500,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  InkWell(
+                    child: const Text("京ICP备2023032577号",
                         style: TextStyle(
                             color: Color.fromARGB(120, 180, 180, 180))),
                     onTap: () =>
                         launchUrl(Uri.parse('https://beian.miit.gov.cn')),
                   ),
-                ),
-              ],
-            ),
+                  const Padding(
+                    padding: EdgeInsets.fromLTRB(8.0, 0, 8, 0),
+                    child: Text("京公网安备11011402053652号",
+                        style: TextStyle(
+                            color: Color.fromARGB(120, 180, 180, 180))),
+                  ),
+                ],
+              ),
+            ],
           ),
         );
       } else {
@@ -1569,8 +1631,8 @@ Another new direction is quantum computation. We will be collaborating with team
             padding: const EdgeInsets.fromLTRB(30, 0, 30, 0),
             child: Column(
               children: [
-                Padding(
-                  padding: const EdgeInsets.all(10.0),
+                const Padding(
+                  padding: EdgeInsets.all(10.0),
                   child: SelectableText(
                     'Research Areas in the Zhao Group',
                     style: TextStyle(
@@ -1579,7 +1641,7 @@ Another new direction is quantum computation. We will be collaborating with team
                     ),
                   ),
                 ),
-                Align(
+                const Align(
                   alignment: Alignment.centerLeft,
                   child: SelectableText(
                     """1. Density Functional Theory (DFT) Methods for Relativistic Effects and Strong Correlations in Extended Systems:""",
@@ -1589,7 +1651,7 @@ Another new direction is quantum computation. We will be collaborating with team
                     ),
                   ),
                 ),
-                Align(
+                const Align(
                   alignment: Alignment.centerLeft,
                   child: SelectableText(
                     '''Materials containing heavy elements exhibit numerous novel properties, placing them at the forefront of physics and chemistry research. Compared to light elements, heavy atoms in the last few rows of the periodic table have much more complex electronic structures, leading to a long-standing challenge for ab initio calculations. This complexity often arises from two aspects: relativistic effects, which conceptually include the so-called scalar relativistic (SR) effects and the spin-orbit coupling (SOC) effects; and strong correlation effects, usually associated with the electron localization of unfilled d/f shells of transition metals.
@@ -1600,10 +1662,10 @@ In previous studies, we have developed a quasi-four-component (Q4C) relativistic
                   ),
                 ),
                 Image.asset(
-                  'imgs/research1.png',
+                  'assets/imgs/research1.png',
                   width: MediaQuery.of(context).size.width * 0.7,
                 ),
-                Align(
+                const Align(
                   alignment: Alignment.centerLeft,
                   child: SelectableText(
                     """2. Large-Scale DFT Code Development:""",
@@ -1613,7 +1675,7 @@ In previous studies, we have developed a quasi-four-component (Q4C) relativistic
                     ),
                   ),
                 ),
-                Align(
+                const Align(
                   alignment: Alignment.centerLeft,
                   child: SelectableText(
                     '''We are active developers of the FHI-aims electronic structure code package, which is an all-electron full-potential DFT code designed for large-scale parallel calculations. The ongoing in-house developments will be implemented under the framework of FHI-aims, adopting numeric atomical orbitals (NAO) as basis sets.''',
@@ -1622,7 +1684,7 @@ In previous studies, we have developed a quasi-four-component (Q4C) relativistic
                     ),
                   ),
                 ),
-                Align(
+                const Align(
                   alignment: Alignment.centerLeft,
                   child: SelectableText(
                     """3. Computational Chemistry and Materials Sciences:""",
@@ -1632,7 +1694,7 @@ In previous studies, we have developed a quasi-four-component (Q4C) relativistic
                     ),
                   ),
                 ),
-                Align(
+                const Align(
                   alignment: Alignment.centerLeft,
                   child: SelectableText(
                     '''The aforementioned methods will be applied to materials containing heavy elements, such as perovskites, nuclear fuels, and magnetic materials.''',
@@ -1647,33 +1709,35 @@ In previous studies, we have developed a quasi-four-component (Q4C) relativistic
                     Column(
                       children: [
                         Image.asset(
-                          'imgs/research2.png',
+                          'assets/imgs/research2.png',
                           width: MediaQuery.of(context).size.width * 0.5,
                         ),
-                        SelectableText('Organic-Inorganic\nHybrid Perovskites'),
+                        const SelectableText(
+                            'Organic-Inorganic\nHybrid Perovskites'),
                       ],
                     ),
                     Column(
                       children: [
                         Image.asset(
-                          'imgs/research3.png',
+                          'assets/imgs/research3.png',
                           width: MediaQuery.of(context).size.width * 0.5,
                         ),
-                        SelectableText('Electric-Driven\nMolecular Machines'),
+                        const SelectableText(
+                            'Electric-Driven\nMolecular Machines'),
                       ],
                     ),
                     Column(
                       children: [
                         Image.asset(
-                          'imgs/research4.png',
+                          'assets/imgs/research4.png',
                           width: MediaQuery.of(context).size.width * 0.5,
                         ),
-                        SelectableText('Metallofullerenes'),
+                        const SelectableText('Metallofullerenes'),
                       ],
                     ),
                   ],
                 ),
-                Align(
+                const Align(
                   alignment: Alignment.centerLeft,
                   child: SelectableText(
                     """4. Machine Learning (ML) and Quantum Computations for Electronic Structures:""",
@@ -1683,7 +1747,7 @@ In previous studies, we have developed a quasi-four-component (Q4C) relativistic
                     ),
                   ),
                 ),
-                Align(
+                const Align(
                   alignment: Alignment.centerLeft,
                   child: SelectableText(
                     '''
@@ -1696,18 +1760,26 @@ Another new direction is quantum computation. We will be collaborating with team
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 500,
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: InkWell(
-                    child: SelectableText("京ICP备2023032577号",
-                        style: TextStyle(
-                            color: Color.fromARGB(120, 180, 180, 180))),
-                    onTap: () =>
-                        launchUrl(Uri.parse('https://beian.miit.gov.cn')),
-                  ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    InkWell(
+                      child: const Text("京ICP备2023032577号",
+                          style: TextStyle(
+                              color: Color.fromARGB(120, 180, 180, 180))),
+                      onTap: () =>
+                          launchUrl(Uri.parse('https://beian.miit.gov.cn')),
+                    ),
+                    const Padding(
+                      padding: EdgeInsets.fromLTRB(8.0, 0, 8, 0),
+                      child: Text("京公网安备11011402053652号",
+                          style: TextStyle(
+                              color: Color.fromARGB(120, 180, 180, 180))),
+                    ),
+                  ],
                 ),
               ],
             ),
@@ -1723,7 +1795,7 @@ class ContactPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: MediaQuery.of(context).size.height - 150,
       child: Column(
         children: [
@@ -1745,10 +1817,10 @@ class ContactPage extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Align(
+                  const Align(
                     alignment: Alignment.centerLeft,
                     child: Padding(
-                      padding: const EdgeInsets.fromLTRB(30, 0, 30, 0),
+                      padding: EdgeInsets.fromLTRB(30, 0, 30, 0),
                       child: SelectableText(
                         '''Rundong Zhao, Principal Investigator
 Associate Professor of Physics
@@ -1775,12 +1847,12 @@ E-mail rdzhao <at> buaa.edu.cn''',
                       ),
                     ),
                   ),
-                  Align(
+                  const Align(
                     alignment: Alignment.centerLeft,
                     child: Padding(
-                      padding: const EdgeInsets.fromLTRB(30, 0, 30, 0),
+                      padding: EdgeInsets.fromLTRB(30, 0, 30, 0),
                       child: SelectableText(
-                        '''We typically recruit 1-2 undergraduate researchers, 1-2 Mphil students (with intent to pursue PhD), and 1-2 PhD students per year. Undergraduate and prospective Mphil/PhD students are welcome to reach out for a discussion.
+                        '''We typically recruit 1-2 undergraduate researchers, 1-2 MPhil students (with intent to pursue PhD), and 1-2 PhD students per year. Undergraduate and prospective MPhil/PhD students are welcome to reach out for a discussion.
 Please note that there are no openings for CSC international students at the Master’s degree level. Therefore, all inquiries will not receive a response—apologies!
 For postdoc or visiting scholar positions, please contact the PI for more details.''',
                         style: TextStyle(
@@ -1793,10 +1865,22 @@ For postdoc or visiting scholar positions, please contact the PI for more detail
               ),
             ),
           ),
-          InkWell(
-            child: SelectableText("京ICP备2023032577号",
-                style: TextStyle(color: Color.fromARGB(120, 180, 180, 180))),
-            onTap: () => launchUrl(Uri.parse('https://beian.miit.gov.cn')),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              InkWell(
+                child: const Text("京ICP备2023032577号",
+                    style:
+                        TextStyle(color: Color.fromARGB(120, 180, 180, 180))),
+                onTap: () => launchUrl(Uri.parse('https://beian.miit.gov.cn')),
+              ),
+              const Padding(
+                padding: EdgeInsets.fromLTRB(8.0, 0, 8, 0),
+                child: Text("京公网安备11011402053652号",
+                    style:
+                        TextStyle(color: Color.fromARGB(120, 180, 180, 180))),
+              ),
+            ],
           ),
         ],
       ),
@@ -1815,34 +1899,43 @@ class MiscellaneousPage extends StatelessWidget {
         children: [
           Padding(
             padding: const EdgeInsets.all(10.0),
-            child: Image.asset('imgs/msl1.png'),
+            child: Image.asset('assets/imgs/msl1.png'),
           ),
           Padding(
             padding: const EdgeInsets.all(10.0),
-            child: Image.asset('imgs/msl2.png'),
+            child: Image.asset('assets/imgs/msl2.png'),
           ),
           Padding(
             padding: const EdgeInsets.all(10.0),
-            child: Image.asset('imgs/msl3.png'),
+            child: Image.asset('assets/imgs/msl3.png'),
           ),
           Padding(
             padding: const EdgeInsets.all(10.0),
-            child: Image.asset('imgs/msl4.png'),
+            child: Image.asset('assets/imgs/msl4.png'),
           ),
           Padding(
             padding: const EdgeInsets.all(10.0),
-            child: Image.asset('imgs/msl5.png'),
+            child: Image.asset('assets/imgs/msl5.png'),
           ),
-          SizedBox(
+          const SizedBox(
             height: 500,
           ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: InkWell(
-              child: SelectableText("京ICP备2023032577号",
-                  style: TextStyle(color: Color.fromARGB(120, 180, 180, 180))),
-              onTap: () => launchUrl(Uri.parse('https://beian.miit.gov.cn')),
-            ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              InkWell(
+                child: const Text("京ICP备2023032577号",
+                    style:
+                        TextStyle(color: Color.fromARGB(120, 180, 180, 180))),
+                onTap: () => launchUrl(Uri.parse('https://beian.miit.gov.cn')),
+              ),
+              const Padding(
+                padding: EdgeInsets.fromLTRB(8.0, 0, 8, 0),
+                child: Text("京公网安备11011402053652号",
+                    style:
+                        TextStyle(color: Color.fromARGB(120, 180, 180, 180))),
+              ),
+            ],
           ),
         ],
       ),
@@ -1855,14 +1948,14 @@ class ComingUp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: MediaQuery.of(context).size.height - 150,
       child: Column(
         children: [
-          Expanded(
+          const Expanded(
             child: SingleChildScrollView(
               child: Padding(
-                padding: const EdgeInsets.all(10.0),
+                padding: EdgeInsets.all(10.0),
                 child: Center(
                   child: Column(
                     children: [
@@ -1880,10 +1973,22 @@ class ComingUp extends StatelessWidget {
               ),
             ),
           ),
-          InkWell(
-            child: SelectableText("京ICP备2023032577号",
-                style: TextStyle(color: Color.fromARGB(120, 180, 180, 180))),
-            onTap: () => launchUrl(Uri.parse('https://beian.miit.gov.cn')),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              InkWell(
+                child: const Text("京ICP备2023032577号",
+                    style:
+                        TextStyle(color: Color.fromARGB(120, 180, 180, 180))),
+                onTap: () => launchUrl(Uri.parse('https://beian.miit.gov.cn')),
+              ),
+              const Padding(
+                padding: EdgeInsets.fromLTRB(8.0, 0, 8, 0),
+                child: Text("京公网安备11011402053652号",
+                    style:
+                        TextStyle(color: Color.fromARGB(120, 180, 180, 180))),
+              ),
+            ],
           ),
         ],
       ),
